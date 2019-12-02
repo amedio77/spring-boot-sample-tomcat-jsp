@@ -1,0 +1,16 @@
+---
+applications:
+- name: lifelog-jsp-001
+  memory: 3G
+  instances: 1
+  path: ./target/spring-boot-jsp-sample-0.0.1-SNAPSHOT.war
+  buildpack: java_buildpack_offline
+  services:
+   - lifelog-db  
+  env:
+   spring.profiles.active: prd  
+   server.port: 25300
+   JAVA_OPTS: -XX:MetaspaceSize=2048m -XX:MaxMetaspaceSize=2048m -Xms4096m -Xmx4096m
+   CATALINA_OPTS: -XX:MaxPermSize=2048m -CachingAllowed=true  -CacheMaxSize=1000000
+
+
